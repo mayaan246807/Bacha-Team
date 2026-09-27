@@ -1,1064 +1,2145 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Bacha Team — Since 2015</title>
+<title>Bacha Team — Since 2015</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    /* =========================
-       RESET
-    ========================= */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
 
-    html {
-      scroll-behavior: smooth;
-    }
+/* =========================================================
+   RESET
+========================================================= */
 
-    body {
-      font-family: "DM Sans", sans-serif;
-      background: #08090d;
-      color: #ffffff;
-      overflow-x: hidden;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    /* =========================
-       VARIABLES
-    ========================= */
-    :root {
-      --bg: #08090d;
-      --card: #11131a;
-      --card-light: #171a22;
-      --white: #ffffff;
-      --muted: #9da3b0;
-      --accent: #7c5cff;
-      --accent-2: #00d9ff;
-      --border: rgba(255,255,255,0.09);
-    }
+body {
+    font-family: "DM Sans", sans-serif;
+    background: #080a10;
+    color: #fff;
+    overflow-x: hidden;
+}
 
-    /* =========================
-       BACKGROUND EFFECTS
-    ========================= */
-    .background {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -2;
-      overflow: hidden;
-    }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-    .orb {
-      position: absolute;
-      width: 450px;
-      height: 450px;
-      border-radius: 50%;
-      filter: blur(100px);
-      opacity: 0.14;
-      animation: float 9s ease-in-out infinite;
-    }
+button {
+    font-family: inherit;
+}
 
-    .orb.one {
-      background: #7657ff;
-      top: -180px;
-      left: -100px;
-    }
 
-    .orb.two {
-      background: #00c8ff;
-      right: -180px;
-      top: 35%;
-      animation-delay: -3s;
-    }
+/* =========================================================
+   VARIABLES
+========================================================= */
 
-    .orb.three {
-      background: #ff4ecd;
-      bottom: -220px;
-      left: 35%;
-      animation-delay: -6s;
-    }
+:root {
+    --bg: #080a10;
+    --surface: #10131b;
+    --surface-2: #151923;
+    --text: #ffffff;
+    --muted: #9199a8;
 
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) scale(1);
-      }
+    --blue: #3d8bff;
+    --blue-light: #69a9ff;
+    --blue-glow: rgba(61,139,255,.25);
 
-      50% {
-        transform: translate(35px, -30px) scale(1.1);
-      }
-    }
+    --pink: #ff5c9d;
+    --pink-light: #ff83b6;
+    --pink-glow: rgba(255,92,157,.25);
 
-    /* =========================
-       NAVBAR
-    ========================= */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 18px 6%;
-      backdrop-filter: blur(18px);
-      background: rgba(8, 9, 13, 0.7);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+    --border: rgba(255,255,255,.09);
+}
 
-    .nav-container {
-      max-width: 1250px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
 
-    .logo {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
-    .logo span {
-      color: var(--accent);
-    }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -5;
 
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
+    background:
+        radial-gradient(circle at 10% 10%, rgba(61,139,255,.08), transparent 28%),
+        radial-gradient(circle at 90% 25%, rgba(255,92,157,.07), transparent 28%),
+        radial-gradient(circle at 50% 100%, rgba(120,80,255,.06), transparent 30%);
+}
 
-    .nav-links a {
-      color: #b8bdc8;
-      font-size: 0.9rem;
-      transition: 0.3s ease;
-    }
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    pointer-events: none;
+    opacity: .22;
 
-    .nav-links a:hover {
-      color: white;
-    }
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
 
-    .nav-button {
-      padding: 10px 18px;
-      border: 1px solid var(--border);
-      border-radius: 30px;
-      font-size: 0.85rem;
-      transition: 0.3s ease;
-    }
+    background-size: 70px 70px;
 
-    .nav-button:hover {
-      background: white;
-      color: black;
-      transform: translateY(-2px);
-    }
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+}
 
-    /* =========================
-       HERO
-    ========================= */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 130px 6% 80px;
-      position: relative;
-    }
 
-    .hero-content {
-      max-width: 900px;
-    }
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 15px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      background: rgba(255,255,255,0.035);
-      color: #c5c9d2;
-      font-size: 0.82rem;
-      margin-bottom: 28px;
-      animation: fadeUp 0.8s ease forwards;
-    }
+nav {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
 
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #52e58b;
-      box-shadow: 0 0 12px #52e58b;
-    }
+    width: min(1100px, calc(100% - 30px));
 
-    .hero h1 {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(4rem, 11vw, 8.5rem);
-      line-height: 0.9;
-      letter-spacing: -7px;
-      margin-bottom: 28px;
-      background: linear-gradient(
+    padding: 10px 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgba(12,14,21,.78);
+    backdrop-filter: blur(18px);
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    z-index: 1000;
+
+    box-shadow: 0 15px 50px rgba(0,0,0,.25);
+}
+
+.logo {
+    padding-left: 10px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: -.5px;
+}
+
+.logo span {
+    color: var(--blue);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 5px;
+}
+
+.nav-links a {
+    display: block;
+
+    padding: 9px 14px;
+
+    border-radius: 11px;
+
+    color: #9ca4b3;
+
+    font-size: .85rem;
+    font-weight: 500;
+
+    transition: .3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+    background: rgba(255,255,255,.07);
+}
+
+.nav-pill {
+    padding: 9px 15px;
+
+    border: 1px solid rgba(61,139,255,.35);
+    border-radius: 12px;
+
+    color: var(--blue-light);
+
+    font-size: .78rem;
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.nav-pill:hover {
+    background: var(--blue);
+    color: white;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 140px 20px 100px;
+
+    position: relative;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    padding: 8px 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 100px;
+
+    background: rgba(255,255,255,.035);
+
+    color: #aeb6c5;
+
+    font-size: .78rem;
+    font-weight: 600;
+
+    margin-bottom: 28px;
+
+    animation: fadeUp .8s ease both;
+}
+
+.eyebrow-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #55df92;
+    box-shadow: 0 0 15px #55df92;
+}
+
+.hero h1 {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(4rem, 12vw, 9rem);
+
+    line-height: .84;
+    letter-spacing: -8px;
+
+    margin-bottom: 30px;
+
+    background: linear-gradient(
         120deg,
-        #ffffff,
-        #b9b0ff 45%,
-        #6eeaff
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: fadeUp 0.9s ease forwards;
-    }
+        #fff 15%,
+        #8dbbff 45%,
+        #ff85b7 80%
+    );
 
-    .hero p {
-      max-width: 620px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 1.08rem;
-      line-height: 1.7;
-      animation: fadeUp 1s ease forwards;
-    }
+    -webkit-background-clip: text;
+    background-clip: text;
 
-    .hero-buttons {
-      margin-top: 34px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      animation: fadeUp 1.1s ease forwards;
-    }
+    color: transparent;
 
-    .primary-btn,
-    .secondary-btn {
-      padding: 13px 22px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: 0.35s ease;
-    }
+    animation: heroTitle 1s cubic-bezier(.2,.8,.2,1) both;
+}
 
-    .primary-btn {
-      background: white;
-      color: black;
-    }
+.hero p {
+    max-width: 650px;
+    margin: auto;
 
-    .primary-btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 35px rgba(255,255,255,0.15);
-    }
+    color: var(--muted);
 
-    .secondary-btn {
-      border: 1px solid var(--border);
-      color: white;
-    }
+    font-size: 1.02rem;
+    line-height: 1.75;
 
-    .secondary-btn:hover {
-      background: rgba(255,255,255,0.06);
-      transform: translateY(-4px);
-    }
+    animation: fadeUp 1s .15s ease both;
+}
 
-    @keyframes fadeUp {
-      from {
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 35px;
+
+    animation: fadeUp 1s .25s ease both;
+}
+
+.hero-btn {
+    padding: 13px 20px;
+
+    border-radius: 12px;
+
+    font-weight: 600;
+    font-size: .88rem;
+
+    transition: .3s ease;
+}
+
+.hero-primary {
+    background: white;
+    color: #080a10;
+}
+
+.hero-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(255,255,255,.15);
+}
+
+.hero-secondary {
+    border: 1px solid var(--border);
+    color: white;
+}
+
+.hero-secondary:hover {
+    background: rgba(255,255,255,.06);
+    transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+section {
+    padding: 110px 20px;
+}
+
+.container {
+    width: min(1100px, 100%);
+    margin: auto;
+}
+
+.section-heading {
+    margin-bottom: 45px;
+}
+
+.section-label {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+
+    color: #798394;
+
+    font-weight: 700;
+
+    margin-bottom: 13px;
+}
+
+.section-title {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+
+    letter-spacing: -2px;
+
+    line-height: 1;
+}
+
+.section-description {
+    max-width: 620px;
+
+    color: var(--muted);
+
+    line-height: 1.7;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================================
+   TEAM SWITCHER
+========================================================= */
+
+.team-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    margin-bottom: 50px;
+}
+
+.switch-btn {
+    border: 1px solid var(--border);
+    background: #10131a;
+
+    color: #8d96a6;
+
+    padding: 11px 20px;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: .3s ease;
+}
+
+.switch-btn:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
+.switch-btn.active.boys {
+    color: white;
+    background: rgba(61,139,255,.14);
+    border-color: rgba(61,139,255,.45);
+    box-shadow: 0 0 25px rgba(61,139,255,.08);
+}
+
+.switch-btn.active.girls {
+    color: white;
+    background: rgba(255,92,157,.14);
+    border-color: rgba(255,92,157,.45);
+    box-shadow: 0 0 25px rgba(255,92,157,.08);
+}
+
+
+/* =========================================================
+   TEAM PANELS
+========================================================= */
+
+.team-panel {
+    display: none;
+
+    animation: panelIn .5s ease;
+}
+
+.team-panel.active {
+    display: block;
+}
+
+.team-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 30px;
+
+    margin-bottom: 25px;
+}
+
+.team-name {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 2rem;
+
+    letter-spacing: -1px;
+}
+
+.team-subtitle {
+    color: var(--muted);
+    font-size: .9rem;
+    margin-top: 6px;
+}
+
+.team-color {
+    width: 10px;
+    height: 10px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    margin-right: 7px;
+}
+
+.blue-dot {
+    background: var(--blue);
+    box-shadow: 0 0 14px var(--blue);
+}
+
+.pink-dot {
+    background: var(--pink);
+    box-shadow: 0 0 14px var(--pink);
+}
+
+
+/* =========================================================
+   MEMBER CARDS
+========================================================= */
+
+.members-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+}
+
+.member-card {
+    min-height: 220px;
+
+    position: relative;
+
+    padding: 24px;
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.018)
+        );
+
+    overflow: hidden;
+
+    transition:
+        transform .4s cubic-bezier(.2,.8,.2,1),
+        border-color .3s ease,
+        background .3s ease;
+
+    opacity: 0;
+    transform: translateY(25px);
+}
+
+.member-card.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.member-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    filter: blur(55px);
+
+    right: -65px;
+    top: -65px;
+
+    opacity: 0;
+
+    transition: .4s ease;
+}
+
+.boys-card::after {
+    background: var(--blue);
+}
+
+.girls-card::after {
+    background: var(--pink);
+}
+
+.member-card:hover {
+    transform: translateY(-8px) !important;
+    background: rgba(255,255,255,.06);
+}
+
+.member-card:hover::after {
+    opacity: .3;
+}
+
+.boys-card:hover {
+    border-color: rgba(61,139,255,.4);
+}
+
+.girls-card:hover {
+    border-color: rgba(255,92,157,.4);
+}
+
+.member-number {
+    color: #626b7b;
+
+    font-size: .7rem;
+
+    margin-bottom: 50px;
+}
+
+.member-avatar {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 700;
+
+    margin-bottom: 18px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.boys-card .member-avatar {
+    background: rgba(61,139,255,.13);
+    color: var(--blue-light);
+}
+
+.girls-card .member-avatar {
+    background: rgba(255,92,157,.13);
+    color: var(--pink-light);
+}
+
+.member-name {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 1.35rem;
+
+    position: relative;
+    z-index: 2;
+}
+
+.member-role {
+    color: var(--muted);
+
+    font-size: .78rem;
+
+    margin-top: 5px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.leader-role {
+    font-weight: 600;
+}
+
+.boys-card .leader-role {
+    color: var(--blue-light);
+}
+
+.girls-card .leader-role {
+    color: var(--pink-light);
+}
+
+
+/* =========================================================
+   TEAM STATS
+========================================================= */
+
+.team-stats {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+.mini-stat {
+    padding: 19px;
+
+    border: 1px solid var(--border);
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.025);
+}
+
+.mini-stat strong {
+    display: block;
+
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 1.3rem;
+
+    margin-bottom: 3px;
+}
+
+.mini-stat span {
+    color: var(--muted);
+    font-size: .72rem;
+}
+
+
+/* =========================================================
+   FLAGS
+========================================================= */
+
+.flags-section {
+    background: rgba(255,255,255,.012);
+}
+
+.flags-heading {
+    text-align: center;
+}
+
+.flags-heading .section-description {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flags-tabs {
+    display: flex;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin: 40px 0;
+}
+
+.flag-tab {
+    border: 1px solid var(--border);
+
+    background: #10131a;
+
+    color: #8f97a5;
+
+    padding: 10px 18px;
+
+    border-radius: 11px;
+
+    cursor: pointer;
+
+    transition: .3s ease;
+}
+
+.flag-tab.active {
+    color: white;
+    border-color: rgba(255,255,255,.2);
+    background: rgba(255,255,255,.07);
+}
+
+.flag-group {
+    display: none;
+    animation: panelIn .5s ease;
+}
+
+.flag-group.active {
+    display: block;
+}
+
+.flags-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 16px;
+}
+
+.flag-card {
+    min-height: 180px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #10131a;
+
+    position: relative;
+    overflow: hidden;
+
+    transition: .35s ease;
+}
+
+.flag-card:hover {
+    transform: translateY(-7px);
+}
+
+.flag-card.blue-flag:hover {
+    border-color: rgba(61,139,255,.4);
+    box-shadow: 0 15px 40px rgba(61,139,255,.08);
+}
+
+.flag-card.pink-flag:hover {
+    border-color: rgba(255,92,157,.4);
+    box-shadow: 0 15px 40px rgba(255,92,157,.08);
+}
+
+.flag-icon {
+    font-size: 3rem;
+
+    margin-bottom: 13px;
+
+    transition: .4s ease;
+}
+
+.flag-card:hover .flag-icon {
+    transform: scale(1.15) rotate(-4deg);
+}
+
+.flag-name {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1rem;
+}
+
+.flag-owner {
+    color: var(--muted);
+    font-size: .72rem;
+    margin-top: 4px;
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.story-large {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+}
+
+.story-large span {
+    color: var(--blue-light);
+}
+
+.story-text {
+    color: var(--muted);
+
+    line-height: 1.8;
+
+    margin-top: 20px;
+}
+
+.timeline {
+    border-left: 1px solid rgba(255,255,255,.12);
+
+    padding-left: 28px;
+}
+
+.timeline-item {
+    position: relative;
+
+    padding-bottom: 35px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: "";
+
+    position: absolute;
+
+    left: -35px;
+    top: 5px;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: var(--blue);
+
+    box-shadow: 0 0 16px var(--blue);
+}
+
+.timeline-year {
+    color: var(--blue-light);
+
+    font-size: .72rem;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 7px;
+}
+
+.timeline-title {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: 1.1rem;
+
+    margin-bottom: 5px;
+}
+
+.timeline-text {
+    color: var(--muted);
+
+    font-size: .85rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.quote {
+    padding: 100px 20px;
+}
+
+.quote-box {
+    width: min(900px, 100%);
+
+    margin: auto;
+
+    padding: 70px 30px;
+
+    text-align: center;
+
+    border: 1px solid var(--border);
+
+    border-radius: 28px;
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(61,139,255,.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(255,92,157,.08),
+            transparent 35%
+        ),
+        #10131a;
+}
+
+.quote-mark {
+    font-family: Georgia, serif;
+
+    color: #687284;
+
+    font-size: 4rem;
+
+    line-height: .5;
+
+    margin-bottom: 25px;
+}
+
+.quote-text {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-size: clamp(1.7rem, 4vw, 3rem);
+
+    letter-spacing: -1px;
+
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    border-top: 1px solid var(--border);
+
+    padding: 35px 20px;
+}
+
+.footer-inner {
+    width: min(1100px, 100%);
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+.footer-logo {
+    font-family: "Space Grotesk", sans-serif;
+
+    font-weight: 700;
+}
+
+.footer-logo span {
+    color: var(--blue);
+}
+
+.footer-text {
+    color: #687080;
+
+    font-size: .75rem;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp {
+
+    from {
         opacity: 0;
         transform: translateY(25px);
-      }
+    }
 
-      to {
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
 
-    /* =========================
-       SECTIONS
-    ========================= */
-    section {
-      padding: 110px 6%;
+}
+
+@keyframes heroTitle {
+
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.97);
     }
 
-    .section-container {
-      max-width: 1150px;
-      margin: auto;
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 
-    .section-label {
-      color: var(--accent-2);
-      text-transform: uppercase;
-      font-size: 0.72rem;
-      letter-spacing: 2px;
-      font-weight: 700;
-      margin-bottom: 14px;
+}
+
+@keyframes panelIn {
+
+    from {
+        opacity: 0;
+        transform: translateY(12px);
     }
 
-    .section-title {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      letter-spacing: -2px;
-      margin-bottom: 18px;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .section-description {
-      color: var(--muted);
-      max-width: 650px;
-      line-height: 1.7;
-    }
+}
 
-    /* =========================
-       STATS
-    ========================= */
-    .stats {
-      padding-top: 30px;
-    }
 
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
+/* =========================================================
+   RESPONSIVE
+========================================================= */
 
-    .stat {
-      padding: 30px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      transition: 0.35s ease;
-    }
-
-    .stat:hover {
-      transform: translateY(-7px);
-      background: var(--card-light);
-      border-color: rgba(124,92,255,0.4);
-    }
-
-    .stat-number {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 2.7rem;
-      font-weight: 700;
-      margin-bottom: 5px;
-    }
-
-    .stat-name {
-      color: var(--muted);
-    }
-
-    /* =========================
-       MEMBERS
-    ========================= */
-    .members-header {
-      margin-bottom: 45px;
-    }
+@media (max-width: 900px) {
 
     .members-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .member-card {
-      position: relative;
-      padding: 28px;
-      min-height: 210px;
-      border-radius: 22px;
-      border: 1px solid var(--border);
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.06),
-        rgba(255,255,255,0.025)
-      );
-      overflow: hidden;
-      transition: 0.4s ease;
-    }
-
-    .member-card::before {
-      content: "";
-      position: absolute;
-      width: 150px;
-      height: 150px;
-      background: var(--accent);
-      border-radius: 50%;
-      filter: blur(65px);
-      opacity: 0;
-      right: -50px;
-      top: -50px;
-      transition: 0.4s ease;
-    }
-
-    .member-card:hover {
-      transform: translateY(-9px);
-      border-color: rgba(124,92,255,0.5);
-    }
-
-    .member-card:hover::before {
-      opacity: 0.3;
-    }
-
-    .member-number {
-      font-size: 0.75rem;
-      color: #666d7a;
-      margin-bottom: 45px;
-    }
-
-    .member-name {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.6rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .member-role {
-      color: var(--muted);
-      margin-top: 6px;
-      font-size: 0.85rem;
-      position: relative;
-      z-index: 2;
-    }
-
-    .leader {
-      border-color: rgba(124,92,255,0.35);
-    }
-
-    .leader .member-role {
-      color: #a99aff;
-    }
-
-    /* =========================
-       FLAGS
-    ========================= */
-    .flags-section {
-      text-align: center;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .flags-grid {
-      margin-top: 50px;
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 16px;
-    }
-
-    .flag {
-      height: 140px;
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      transition: 0.4s ease;
-      cursor: default;
-    }
-
-    .flag:hover {
-      transform: translateY(-8px) rotate(-2deg);
-      background: var(--card-light);
-      border-color: rgba(0,217,255,0.4);
-    }
-
-    .flag-icon {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
-
-    .flag-name {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* =========================
-       TIMELINE
-    ========================= */
-    .timeline {
-      margin-top: 50px;
-      position: relative;
-      max-width: 800px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: rgba(255,255,255,0.12);
-    }
-
-    .timeline-item {
-      position: relative;
-      padding-left: 45px;
-      padding-bottom: 50px;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 0;
-      top: 5px;
-      width: 17px;
-      height: 17px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 4px solid var(--bg);
-      box-shadow: 0 0 18px rgba(124,92,255,0.8);
-    }
-
-    .timeline-year {
-      color: var(--accent-2);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      margin-bottom: 8px;
-    }
-
-    .timeline-title {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 7px;
-    }
-
-    .timeline-text {
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    /* =========================
-       QUOTE
-    ========================= */
-    .quote {
-      text-align: center;
-      padding: 120px 6%;
-    }
-
-    .quote-box {
-      max-width: 900px;
-      margin: auto;
-      padding: 60px 30px;
-      border-radius: 28px;
-      border: 1px solid var(--border);
-      background: linear-gradient(
-        135deg,
-        rgba(124,92,255,0.12),
-        rgba(0,217,255,0.05)
-      );
-    }
-
-    .quote-mark {
-      font-size: 4rem;
-      color: var(--accent);
-      line-height: 0.5;
-      margin-bottom: 30px;
-    }
-
-    .quote-text {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(1.6rem, 4vw, 2.8rem);
-      line-height: 1.25;
-      letter-spacing: -1px;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 35px 6%;
-    }
-
-    .footer-container {
-      max-width: 1150px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .footer-logo {
-      font-family: "Space Grotesk", sans-serif;
-      font-weight: 700;
-    }
-
-    .footer-text {
-      color: #686f7d;
-      font-size: 0.82rem;
-    }
-
-    /* =========================
-       SCROLL REVEAL
-    ========================= */
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px);
-      transition: 0.8s ease;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================
-       TABLET
-    ========================= */
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
-
-      .members-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .flags-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .stats-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .hero h1 {
-        letter-spacing: -4px;
-      }
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-    @media (max-width: 600px) {
-      nav {
-        padding: 15px 5%;
-      }
+    .story-grid {
+        grid-template-columns: 1fr;
 
-      .nav-button {
+        gap: 45px;
+    }
+
+    .nav-pill {
         display: none;
-      }
+    }
 
-      .hero {
-        min-height: 90vh;
-        padding: 120px 5% 70px;
-      }
+}
 
-      .hero h1 {
-        font-size: clamp(3.5rem, 18vw, 5rem);
-        letter-spacing: -4px;
-      }
 
-      .hero p {
-        font-size: 0.95rem;
-      }
+@media (max-width: 650px) {
 
-      .hero-buttons {
+    nav {
+        top: 9px;
+
+        width: calc(100% - 18px);
+
+        border-radius: 15px;
+    }
+
+    .nav-links {
+        gap: 0;
+    }
+
+    .nav-links a {
+        padding: 8px 8px;
+        font-size: .72rem;
+    }
+
+    .logo {
+        font-size: 1rem;
+        padding-left: 5px;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
+    .hero h1 {
+        letter-spacing: -5px;
+    }
+
+    .hero-buttons {
         flex-direction: column;
-        max-width: 250px;
+
+        width: min(250px, 100%);
+
         margin-left: auto;
         margin-right: auto;
-      }
+    }
 
-      section {
-        padding: 80px 5%;
-      }
+    section {
+        padding: 80px 16px;
+    }
 
-      .stats-grid {
+    .team-header {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .members-grid {
         grid-template-columns: 1fr;
-      }
+    }
 
-      .members-grid {
+    .team-stats {
         grid-template-columns: 1fr;
-      }
+    }
 
-      .flags-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .flags-grid {
+        grid-template-columns: 1fr 1fr;
 
-      .flag {
-        height: 125px;
-      }
+        gap: 10px;
+    }
 
-      .quote {
-        padding: 80px 5%;
-      }
+    .flag-card {
+        min-height: 150px;
+    }
 
-      .quote-box {
-        padding: 45px 22px;
-      }
+    .story-large {
+        font-size: 2.2rem;
+    }
 
-      .footer-container {
+    .footer-inner {
         flex-direction: column;
         text-align: center;
-      }
     }
 
-    /* =========================
-       SMALL MOBILE
-    ========================= */
-    @media (max-width: 380px) {
-      .flags-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
+}
 
-      .member-card {
-        padding: 23px;
-      }
 
-      .section-title {
-        font-size: 2rem;
-      }
+@media (max-width: 400px) {
+
+    .nav-links a {
+        padding: 8px 6px;
+        font-size: .67rem;
     }
-  </style>
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .flags-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-switcher,
+    .flags-tabs {
+        flex-wrap: wrap;
+    }
+
+}
+
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <!-- Background -->
-  <div class="background">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-    <div class="orb three"></div>
-  </div>
+<div class="grid-bg"></div>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="nav-container">
-      <a href="#home" class="logo">BACHA<span>.</span></a>
+<!-- ======================================================
+     NAVIGATION
+====================================================== -->
 
-      <ul class="nav-links">
-        <li><a href="#members">Members</a></li>
-        <li><a href="#flags">Flags</a></li>
-        <li><a href="#story">Our Story</a></li>
-      </ul>
+<nav>
 
-      <a href="#members" class="nav-button">Meet The Team</a>
+```
+<a href="#home" class="logo">
+    BACHA<span>.</span>
+</a>
+
+<ul class="nav-links">
+
+    <li>
+        <a href="#home" class="active">Home</a>
+    </li>
+
+    <li>
+        <a href="#teams">Teams</a>
+    </li>
+
+    <li>
+        <a href="#flags">Flags</a>
+    </li>
+
+    <li>
+        <a href="#story">Story</a>
+    </li>
+
+</ul>
+
+<a href="#teams" class="nav-pill">
+    Since 2015
+</a>
+```
+
+</nav>
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<main id="home">
+
+<section class="hero">
+
+```
+<div class="hero-content">
+
+    <div class="eyebrow">
+
+        <span class="eyebrow-dot"></span>
+
+        Together since 2015
+
     </div>
-  </nav>
 
-  <!-- Hero -->
-  <main id="home">
 
-    <section class="hero">
-      <div class="hero-content">
+    <h1>
+        Bacha<br>
+        Team
+    </h1>
 
-        <div class="badge">
-          <span class="badge-dot"></span>
-          Together since 2015
+
+    <p>
+        One family. Two teams. Years of memories,
+        competition, jokes and unforgettable moments.
+        Welcome to the Bacha Team.
+    </p>
+
+
+    <div class="hero-buttons">
+
+        <a href="#teams"
+           class="hero-btn hero-primary">
+            Meet The Teams
+        </a>
+
+        <a href="#flags"
+           class="hero-btn hero-secondary">
+            Explore Flags
+        </a>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- ======================================================
+     TEAMS
+====================================================== -->
+
+<section id="teams">
+
+<div class="container">
+
+```
+<div class="section-heading">
+
+    <div class="section-label">
+        The Family
+    </div>
+
+    <h2 class="section-title">
+        Two teams. One Bacha.
+    </h2>
+
+    <p class="section-description">
+        The Bacha Team is divided into two squads,
+        each with its own identity, colour and leader.
+    </p>
+
+</div>
+
+
+<!-- TEAM SWITCHER -->
+
+<div class="team-switcher">
+
+    <button
+        class="switch-btn boys active"
+        onclick="showTeam('boys', this)">
+        🔵 Boys Team
+    </button>
+
+    <button
+        class="switch-btn girls"
+        onclick="showTeam('girls', this)">
+        🩷 Girls Team
+    </button>
+
+</div>
+
+
+<!-- ================= BOYS ================= -->
+
+<div id="boys" class="team-panel active">
+
+    <div class="team-header">
+
+        <div>
+
+            <div class="team-name">
+                <span class="team-color blue-dot"></span>
+                Boys Team
+            </div>
+
+            <div class="team-subtitle">
+                Four members · Leader: Mehram
+            </div>
+
         </div>
 
-        <h1>Bacha<br>Team</h1>
+    </div>
 
-        <p>
-          Six cousins. One team. Years of memories, competition,
-          chaos and unforgettable moments. This is the story of
-          Bacha Team.
+
+    <div class="members-grid">
+
+
+        <div class="member-card boys-card">
+            <div class="member-number">01 / 04</div>
+
+            <div class="member-avatar">
+                A
+            </div>
+
+            <div class="member-name">
+                Ayaan
+            </div>
+
+            <div class="member-role">
+                Team Member
+            </div>
+        </div>
+
+
+        <div class="member-card boys-card">
+            <div class="member-number">02 / 04</div>
+
+            <div class="member-avatar">
+                M
+            </div>
+
+            <div class="member-name">
+                Mehram
+            </div>
+
+            <div class="member-role leader-role">
+                Team Leader
+            </div>
+        </div>
+
+
+        <div class="member-card boys-card">
+            <div class="member-number">03 / 04</div>
+
+            <div class="member-avatar">
+                M
+            </div>
+
+            <div class="member-name">
+                Mehdi
+            </div>
+
+            <div class="member-role">
+                Team Member
+            </div>
+        </div>
+
+
+        <div class="member-card boys-card">
+            <div class="member-number">04 / 04</div>
+
+            <div class="member-avatar">
+                I
+            </div>
+
+            <div class="member-name">
+                Ibrahi
+            </div>
+
+            <div class="member-role">
+                Team Member
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="team-stats">
+
+        <div class="mini-stat">
+            <strong>04</strong>
+            <span>Members</span>
+        </div>
+
+        <div class="mini-stat">
+            <strong>BLUE</strong>
+            <span>Team Identity</span>
+        </div>
+
+        <div class="mini-stat">
+            <strong>Mehram</strong>
+            <span>Team Leader</span>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= GIRLS ================= -->
+
+<div id="girls" class="team-panel">
+
+    <div class="team-header">
+
+        <div>
+
+            <div class="team-name">
+                <span class="team-color pink-dot"></span>
+                Girls Team
+            </div>
+
+            <div class="team-subtitle">
+                Three members · Leader: Aayat
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="members-grid">
+
+
+        <div class="member-card girls-card">
+
+            <div class="member-number">
+                01 / 03
+            </div>
+
+            <div class="member-avatar">
+                A
+            </div>
+
+            <div class="member-name">
+                Aayat
+            </div>
+
+            <div class="member-role leader-role">
+                Team Leader
+            </div>
+
+        </div>
+
+
+        <div class="member-card girls-card">
+
+            <div class="member-number">
+                02 / 03
+            </div>
+
+            <div class="member-avatar">
+                R
+            </div>
+
+            <div class="member-name">
+                Raniya
+            </div>
+
+            <div class="member-role">
+                Team Member
+            </div>
+
+        </div>
+
+
+        <div class="member-card girls-card">
+
+            <div class="member-number">
+                03 / 03
+            </div>
+
+            <div class="member-avatar">
+                M
+            </div>
+
+            <div class="member-name">
+                Minha
+            </div>
+
+            <div class="member-role">
+                Team Member
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="team-stats">
+
+        <div class="mini-stat">
+            <strong>03</strong>
+            <span>Members</span>
+        </div>
+
+        <div class="mini-stat">
+            <strong>PINK</strong>
+            <span>Team Identity</span>
+        </div>
+
+        <div class="mini-stat">
+            <strong>Aayat</strong>
+            <span>Team Leader</span>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     FLAGS
+====================================================== -->
+
+<section id="flags" class="flags-section">
+
+<div class="container">
+
+```
+<div class="flags-heading section-heading">
+
+    <div class="section-label">
+        Team Identity
+    </div>
+
+    <h2 class="section-title">
+        The Flags
+    </h2>
+
+    <p class="section-description">
+        Six flags. Two teams. One family history.
+        Explore the flags representing Bacha Team.
+    </p>
+
+</div>
+
+
+<div class="flags-tabs">
+
+    <button
+        class="flag-tab active"
+        onclick="showFlags('all', this)">
+        All Flags
+    </button>
+
+    <button
+        class="flag-tab"
+        onclick="showFlags('boys-flags', this)">
+        🔵 Boys
+    </button>
+
+    <button
+        class="flag-tab"
+        onclick="showFlags('girls-flags', this)">
+        🩷 Girls
+    </button>
+
+</div>
+
+
+<!-- ALL FLAGS -->
+
+<div id="all" class="flag-group active">
+
+    <div class="flags-grid">
+
+        <div class="flag-card blue-flag">
+            <div class="flag-icon">🚩</div>
+            <div class="flag-name">Boys Flag 01</div>
+            <div class="flag-owner">Boys Team</div>
+        </div>
+
+        <div class="flag-card blue-flag">
+            <div class="flag-icon">🏁</div>
+            <div class="flag-name">Boys Flag 02</div>
+            <div class="flag-owner">Boys Team</div>
+        </div>
+
+        <div class="flag-card blue-flag">
+            <div class="flag-icon">🔵</div>
+            <div class="flag-name">Boys Flag 03</div>
+            <div class="flag-owner">Boys Team</div>
+        </div>
+
+        <div class="flag-card pink-flag">
+            <div class="flag-icon">🚩</div>
+            <div class="flag-name">Girls Flag 01</div>
+            <div class="flag-owner">Girls Team</div>
+        </div>
+
+        <div class="flag-card pink-flag">
+            <div class="flag-icon">🎀</div>
+            <div class="flag-name">Girls Flag 02</div>
+            <div class="flag-owner">Girls Team</div>
+        </div>
+
+        <div class="flag-card pink-flag">
+            <div class="flag-icon">🩷</div>
+            <div class="flag-name">Girls Flag 03</div>
+            <div class="flag-owner">Girls Team</div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOYS FLAGS -->
+
+<div id="boys-flags" class="flag-group">
+
+    <div class="flags-grid">
+
+        <div class="flag-card blue-flag">
+            <div class="flag-icon">🚩</div>
+            <div class="flag-name">Boys Flag 01</div>
+            <div class="flag-owner">Boys Team</div>
+        </div>
+
+        <div class="flag-card blue-flag">
+            <div class="flag-icon">🏁</div>
+            <div class="flag-name">Boys Flag 02</div>
+            <div class="flag-owner">Boys Team</div>
+        </div>
+
+        <div class="flag-card blue-flag">
+            <div class="flag-icon">🔵</div>
+            <div class="flag-name">Boys Flag 03</div>
+            <div class="flag-owner">Boys Team</div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- GIRLS FLAGS -->
+
+<div id="girls-flags" class="flag-group">
+
+    <div class="flags-grid">
+
+        <div class="flag-card pink-flag">
+            <div class="flag-icon">🚩</div>
+            <div class="flag-name">Girls Flag 01</div>
+            <div class="flag-owner">Girls Team</div>
+        </div>
+
+        <div class="flag-card pink-flag">
+            <div class="flag-icon">🎀</div>
+            <div class="flag-name">Girls Flag 02</div>
+            <div class="flag-owner">Girls Team</div>
+        </div>
+
+        <div class="flag-card pink-flag">
+            <div class="flag-icon">🩷</div>
+            <div class="flag-name">Girls Flag 03</div>
+            <div class="flag-owner">Girls Team</div>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+</section>
+
+<!-- ======================================================
+     STORY
+====================================================== -->
+
+<section id="story">
+
+<div class="container">
+
+```
+<div class="story-grid">
+
+
+    <div>
+
+        <div class="section-label">
+            Our History
+        </div>
+
+        <div class="story-large">
+            It started in
+            <span>2015.</span>
+            It became
+            Bacha Team.
+        </div>
+
+        <p class="story-text">
+
+            What began as cousins spending time together
+            grew into a team with its own name, identity
+            and collection of memories.
+
+            <br><br>
+
+            Today, the team has two divisions —
+            the Boys Team and the Girls Team —
+            but the idea remains the same:
+
+            <strong>
+                family first.
+            </strong>
+
         </p>
 
-        <div class="hero-buttons">
-          <a href="#members" class="primary-btn">Meet the Members</a>
-          <a href="#story" class="secondary-btn">Our Story ↓</a>
-        </div>
+    </div>
 
-      </div>
-    </section>
 
-    <!-- Stats -->
-    <section class="stats">
-      <div class="section-container">
+    <div class="timeline">
 
-        <div class="stats-grid">
 
-          <div class="stat reveal">
-            <div class="stat-number">2015</div>
-            <div class="stat-name">The Beginning</div>
-          </div>
+        <div class="timeline-item">
 
-          <div class="stat reveal">
-            <div class="stat-number">06</div>
-            <div class="stat-name">Team Members</div>
-          </div>
-
-          <div class="stat reveal">
-            <div class="stat-number">06</div>
-            <div class="stat-name">Team Flags</div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Members -->
-    <section id="members">
-      <div class="section-container">
-
-        <div class="members-header reveal">
-          <div class="section-label">The Squad</div>
-          <h2 class="section-title">Meet Bacha Team.</h2>
-          <p class="section-description">
-            The people behind the name. Every member brings their own
-            personality, energy and memories to the team.
-          </p>
-        </div>
-
-        <div class="members-grid">
-
-          <div class="member-card leader reveal">
-            <div class="member-number">01 / 06</div>
-            <div class="member-name">Ayaan</div>
-            <div class="member-role">Team Leader</div>
-          </div>
-
-          <div class="member-card reveal">
-            <div class="member-number">02 / 06</div>
-            <div class="member-name">Mehram</div>
-            <div class="member-role">Team Member</div>
-          </div>
-
-          <div class="member-card reveal">
-            <div class="member-number">03 / 06</div>
-            <div class="member-name">Raniya</div>
-            <div class="member-role">Team Member</div>
-          </div>
-
-          <div class="member-card reveal">
-            <div class="member-number">04 / 06</div>
-            <div class="member-name">Ayat</div>
-            <div class="member-role">Team Member</div>
-          </div>
-
-          <div class="member-card reveal">
-            <div class="member-number">05 / 06</div>
-            <div class="member-name">Mehdi</div>
-            <div class="member-role">Team Member</div>
-          </div>
-
-          <div class="member-card reveal">
-            <div class="member-number">06 / 06</div>
-            <div class="member-name">Ibrahim</div>
-            <div class="member-role">Team Member</div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Flags -->
-    <section id="flags" class="flags-section">
-      <div class="section-container">
-
-        <div class="reveal">
-          <div class="section-label">The Collection</div>
-          <h2 class="section-title">Six Flags.</h2>
-          <p class="section-description" style="margin:auto;">
-            Six flags representing the six members of Bacha Team.
-            Each one is part of the team's identity.
-          </p>
-        </div>
-
-        <div class="flags-grid">
-
-          <div class="flag reveal">
-            <div class="flag-icon">🚩</div>
-            <div class="flag-name">Flag One</div>
-          </div>
-
-          <div class="flag reveal">
-            <div class="flag-icon">🏳️</div>
-            <div class="flag-name">Flag Two</div>
-          </div>
-
-          <div class="flag reveal">
-            <div class="flag-icon">🏴</div>
-            <div class="flag-name">Flag Three</div>
-          </div>
-
-          <div class="flag reveal">
-            <div class="flag-icon">🎌</div>
-            <div class="flag-name">Flag Four</div>
-          </div>
-
-          <div class="flag reveal">
-            <div class="flag-icon">🚩</div>
-            <div class="flag-name">Flag Five</div>
-          </div>
-
-          <div class="flag reveal">
-            <div class="flag-icon">🏁</div>
-            <div class="flag-name">Flag Six</div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- Story -->
-    <section id="story">
-      <div class="section-container">
-
-        <div class="reveal">
-          <div class="section-label">Our History</div>
-          <h2 class="section-title">Since 2015.</h2>
-          <p class="section-description">
-            What started as cousins spending time together became
-            something with its own name, identity and history.
-          </p>
-        </div>
-
-        <div class="timeline">
-
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">2015</div>
-            <div class="timeline-title">Bacha Team Begins</div>
-            <div class="timeline-text">
-              Six cousins came together and the Bacha Team era began.
+            <div class="timeline-year">
+                2015
             </div>
-          </div>
 
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">THE YEARS</div>
-            <div class="timeline-title">Memories & Adventures</div>
-            <div class="timeline-text">
-              Games, jokes, arguments, celebrations and countless
-              moments became part of the team's story.
+            <div class="timeline-title">
+                The Beginning
             </div>
-          </div>
 
-          <div class="timeline-item reveal">
-            <div class="timeline-dot"></div>
-            <div class="timeline-year">TODAY</div>
-            <div class="timeline-title">Still Six. Still Bacha Team.</div>
             <div class="timeline-text">
-              The team continues with the same six members and a
-              growing collection of memories.
+                Bacha Team begins as cousins come
+                together and create their own identity.
             </div>
-          </div>
 
         </div>
 
-      </div>
-    </section>
 
-    <!-- Quote -->
-    <section class="quote">
-      <div class="quote-box reveal">
-        <div class="quote-mark">“</div>
+        <div class="timeline-item">
 
-        <div class="quote-text">
-          Cousins by family.<br>
-          Team by choice.
+            <div class="timeline-year">
+                THE YEARS
+            </div>
+
+            <div class="timeline-title">
+                Memories & Adventures
+            </div>
+
+            <div class="timeline-text">
+                Games, jokes, competitions,
+                celebrations and countless moments
+                become part of the story.
+            </div>
+
         </div>
 
-      </div>
-    </section>
 
-  </main>
+        <div class="timeline-item">
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-container">
+            <div class="timeline-year">
+                TODAY
+            </div>
 
-      <div class="footer-logo">
-        BACHA<span style="color:#7c5cff;">.</span>
-      </div>
+            <div class="timeline-title">
+                Two Teams. One Family.
+            </div>
 
-      <div class="footer-text">
-        © <span id="year"></span> Bacha Team · Since 2015
-      </div>
+            <div class="timeline-text">
+                The Boys and Girls teams continue
+                the Bacha Team tradition together.
+            </div>
 
-      <div class="footer-text">
-        6 members · 6 flags · 1 team
-      </div>
+        </div>
+
 
     </div>
-  </footer>
 
-  <!-- JavaScript -->
-  <script>
+</div>
+```
 
-    // Automatically update copyright year
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+</div>
 
-    // Scroll reveal animation
-    const revealElements =
-      document.querySelectorAll(".reveal");
+</section>
 
-    const observer = new IntersectionObserver(
-      (entries) => {
+<!-- ======================================================
+     QUOTE
+====================================================== -->
 
-        entries.forEach((entry) => {
+<section class="quote">
 
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-          }
+<div class="quote-box">
 
+```
+<div class="quote-mark">
+    “
+</div>
+
+<div class="quote-text">
+    Cousins by family.<br>
+    Teams by choice.
+</div>
+```
+
+</div>
+
+</section>
+
+</main>
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer>
+
+<div class="footer-inner">
+
+```
+<div class="footer-logo">
+    BACHA<span>.</span>
+</div>
+
+<div class="footer-text">
+    © <span id="year"></span> Bacha Team · Since 2015
+</div>
+
+<div class="footer-text">
+    2 teams · 7 members · 1 family
+</div>
+```
+
+</div>
+
+</footer>
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script>
+
+/* ========================================================
+   YEAR
+======================================================== */
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+/* ========================================================
+   TEAM SWITCHER
+======================================================== */
+
+function showTeam(team, button) {
+
+    const panels =
+        document.querySelectorAll(".team-panel");
+
+    const buttons =
+        document.querySelectorAll(".switch-btn");
+
+    panels.forEach(panel => {
+        panel.classList.remove("active");
+    });
+
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document
+        .getElementById(team)
+        .classList.add("active");
+
+    button.classList.add("active");
+
+    animateCards(
+        document
+        .getElementById(team)
+        .querySelectorAll(".member-card")
+    );
+}
+
+
+/* ========================================================
+   FLAG SWITCHER
+======================================================== */
+
+function showFlags(group, button) {
+
+    const groups =
+        document.querySelectorAll(".flag-group");
+
+    const buttons =
+        document.querySelectorAll(".flag-tab");
+
+    groups.forEach(item => {
+        item.classList.remove("active");
+    });
+
+    buttons.forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    document
+        .getElementById(group)
+        .classList.add("active");
+
+    button.classList.add("active");
+}
+
+
+/* ========================================================
+   MEMBER CARD ANIMATION
+======================================================== */
+
+function animateCards(cards) {
+
+    cards.forEach((card, index) => {
+
+        card.classList.remove("show");
+
+        setTimeout(() => {
+
+            card.classList.add("show");
+
+        }, index * 90);
+
+    });
+
+}
+
+
+/* ========================================================
+   INITIAL CARD ANIMATION
+======================================================== */
+
+window.addEventListener("load", () => {
+
+    const initialCards =
+        document
+        .querySelectorAll("#boys .member-card");
+
+    animateCards(initialCards);
+
+});
+
+
+/* ========================================================
+   MOUSE TILT EFFECT
+======================================================== */
+
+document.addEventListener("mousemove", event => {
+
+    const card =
+        event.target.closest(".member-card");
+
+    if (!card) return;
+
+    const rect =
+        card.getBoundingClientRect();
+
+    const x =
+        event.clientX - rect.left;
+
+    const y =
+        event.clientY - rect.top;
+
+    const centerX =
+        rect.width / 2;
+
+    const centerY =
+        rect.height / 2;
+
+    const rotateX =
+        ((y - centerY) / centerY) * -2;
+
+    const rotateY =
+        ((x - centerX) / centerX) * 2;
+
+    card.style.transform =
+        `translateY(-8px)
+         perspective(700px)
+         rotateX(${rotateX}deg)
+         rotateY(${rotateY}deg)`;
+
+});
+
+
+/* ========================================================
+   RESET TILT
+======================================================== */
+
+document.querySelectorAll(".member-card")
+.forEach(card => {
+
+    card.addEventListener("mouseleave", () => {
+
+        if (card.classList.contains("show")) {
+
+            card.style.transform =
+                "translateY(0) perspective(700px) rotateX(0) rotateY(0)";
+
+        }
+
+    });
+
+});
+
+
+/* ========================================================
+   NAV ACTIVE LINK
+======================================================== */
+
+const navLinks =
+    document.querySelectorAll(".nav-links a");
+
+const sections =
+    document.querySelectorAll("main section[id]");
+
+window.addEventListener("scroll", () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+    navLinks.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
+            link.classList.add("active");
+        }
+
+    });
+
+});
+
+
+/* ========================================================
+   SMOOTH NAVIGATION
+======================================================== */
+
+document.querySelectorAll('a[href^="#"]')
+.forEach(link => {
+
+    link.addEventListener("click", event => {
+
+        const target =
+            document.querySelector(
+                link.getAttribute("href")
+            );
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth"
         });
 
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-    revealElements.forEach((element) => {
-      observer.observe(element);
     });
 
-    // Subtle mouse movement effect for member cards
-    const cards =
-      document.querySelectorAll(".member-card");
+});
 
-    cards.forEach((card) => {
-
-      card.addEventListener("mousemove", (e) => {
-
-        const rect = card.getBoundingClientRect();
-
-        const x =
-          e.clientX - rect.left;
-
-        const y =
-          e.clientY - rect.top;
-
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-
-        const rotateX =
-          ((y - centerY) / centerY) * -3;
-
-        const rotateY =
-          ((x - centerX) / centerX) * 3;
-
-        card.style.transform =
-          `translateY(-9px) perspective(700px)
-           rotateX(${rotateX}deg)
-           rotateY(${rotateY}deg)`;
-
-      });
-
-      card.addEventListener("mouseleave", () => {
-
-        card.style.transform =
-          "translateY(0) perspective(700px) rotateX(0) rotateY(0)";
-
-      });
-
-    });
-
-  </script>
+</script>
 
 </body>
 </html>
